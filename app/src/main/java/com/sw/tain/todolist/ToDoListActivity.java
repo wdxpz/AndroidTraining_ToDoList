@@ -12,12 +12,15 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 
+import com.sw.tain.todolist.Model.ToDoItem;
+import com.sw.tain.todolist.Model.ToDoListItemAdapter;
+
 import java.util.ArrayList;
 
 public class ToDoListActivity extends FragmentActivity implements NewItemFragment.onNewItemCreateLisnter{
 
-    private ArrayList<String> mArrayItems;
-    private ArrayAdapter<String> mAdapter;
+    private ArrayList<ToDoItem> mArrayItems;
+    private ToDoListItemAdapter mAdapter;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransction;
     private ItemListFragment mItemListFragment;
@@ -31,7 +34,7 @@ public class ToDoListActivity extends FragmentActivity implements NewItemFragmen
 
 
         mArrayItems = new ArrayList<>();
-        mAdapter = new ArrayAdapter<>(this, R.layout.list_item_to_do_list_item, mArrayItems);
+        mAdapter = new ToDoListItemAdapter(this, R.layout.list_item_to_do_list_item, mArrayItems);
 
 //        mItemListFragment = new ItemListFragment();
 //        mItemListFragment.setListAdapter(mAdapter);
@@ -51,7 +54,8 @@ public class ToDoListActivity extends FragmentActivity implements NewItemFragmen
 
     @Override
     public void onNewItemCreate(String item) {
-        mArrayItems.add(item);
+        ToDoItem todoitem = new ToDoItem(item);
+        mArrayItems.add(todoitem);
         mAdapter.notifyDataSetChanged();
     }
 }

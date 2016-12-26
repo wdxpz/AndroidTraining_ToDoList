@@ -1,9 +1,24 @@
-<com.sw.tain.todolist.UIWidget.ToDoListItemView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/id_todolistitem"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:textColor="@color/notepad_text"
-    android:padding="10dp"
-    android:scrollbars="vertical"
-    android:fadingEdge="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+
+    <TextView
+        android:id="@+id/item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical"
+        android:layout_alignParentRight="true"/>
+
+    <com.sw.tain.todolist.UIWidget.ToDoListItemView
+        android:id="@+id/id_todolistitem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/notepad_text"
+        android:padding="10dp"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical"
+        android:layout_toLeftOf="@id/item_date"
     />
+</RelativeLayout>
